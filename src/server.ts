@@ -1,5 +1,4 @@
 import express from "express";
-var cors = require('cors')
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 import { router } from "./routes";
@@ -7,13 +6,7 @@ import { router } from "./routes";
 const app = express();
 //cors
 app.use(express.json());
-// app.use(cors)
 app.use(router);
-
-app.get("/", (req , res) => {
-  req.header
-  return res.send("Api is running");
-});
 
 app.listen(3333, () => {
   console.log("Server is running");
