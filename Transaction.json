@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "required": ["description", "amount", "date"],
+  "properties": {
+    "description": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Descrição da transação"
+    },
+    "amount": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Valor da transação"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data da transação"
+    }
+  }
+}

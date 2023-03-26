@@ -6,5 +6,6 @@ export interface INewTransacrtion {
   amount: number;
   type: transactionType;
   category: category;
-  date: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }

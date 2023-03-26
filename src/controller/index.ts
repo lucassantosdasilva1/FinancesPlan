@@ -5,25 +5,44 @@ import { INewTransacrtion } from "./@types";
 export class TransactionController {
   //Criar novo produto
   async create(req: Request<{}, {}, INewTransacrtion>, res: Response) {
-    const { name, amount, date, category, type }= req.body;
+    const { name, amount, category, type }= req.body;
 
-    const transaction = new Transaction();
+    try {
+      const transaction = await Transaction.create({
+        name,
+        amount,
+        category,
+        type,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+  
+      return res.json(transaction);
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({ error });
+    }
+    // const transaction = new Transaction();
 
-    transaction.name = name;
-    transaction.amount = amount;
-    transaction.date = date;
-    transaction.category = category;
-    transaction.type = type;
+    // transaction.name = name;
+    // transaction.amount = amount;
+    // transaction.category = category;
+    // transaction.type = type;
+    // transaction.createdAt = new Date();
+    // transaction.updatedAt = new Date();
 
-    await transaction.save();
+    // await transaction.save();
 
-    return res.json(transaction);
+    // return res.json(transaction);
   }
 
   //Listar Produtos
   async list(req: Request, res: Response) {
     try {
-      const transaction = await Transaction.findAll();
+      const transaction = await Transaction.findAll().then((transaction) => {
+        return transaction;
+      });
+      console.log(transaction)
 
       res.status(200).json(transaction);
     } catch (error) {
@@ -48,9 +67,9 @@ export class TransactionController {
         {
           name: req.body.name,
           amount: req.body.amount,
-          date: req.body.date,
           category: req.body.category,
           type: req.body.type,
+          updatedAt: new Date(),
         },
         {
           where: {
