@@ -1,7 +1,8 @@
 import { Sequelize } from "sequelize";
 
 export const sequelize = new Sequelize("financesdb", "lucassantos", "senhadificil", {
-  host: "localhost",
+  host: "172.16.2.89",
+  port: 5433,
   dialect: "postgres",
 });
 

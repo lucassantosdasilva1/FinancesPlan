@@ -3,7 +3,8 @@
     "username": "lucassantos",
     "password": "senhadificil",
     "database": "financesdb",
-    "host": "127.0.0.1",
+    "host": "172.16.2.89",
+    "port": 5433,
     "dialect": "postgres"
   },
   "test": {

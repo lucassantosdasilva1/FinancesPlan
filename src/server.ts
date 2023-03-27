@@ -4,9 +4,15 @@ const swaggerUi = require("swagger-ui-express");
 import { router } from "./routes";
 
 const app = express();
-//cors
 app.use(express.json());
-app.use(router);
+
+// Definindo o prefixo de rota
+const baseRoute = '/financesplan-api';
+
+app.set('base', baseRoute);
+
+// Middleware para adicionar o prefixo a todas as rotas
+app.use(baseRoute, router);
 
 app.listen(3333, () => {
   console.log("Server is running");
