@@ -23,6 +23,11 @@ entrar no banco com psql
 ```bash
 psql
 ```
+criar DATABASE financesdb
+
+```bash
+CREATE DATABASE financesdb;
+```
 
 criar o usuario lucassantos
 
